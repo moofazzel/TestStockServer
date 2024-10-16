@@ -24,7 +24,7 @@ export async function GET(
   const stocks = await Stock.find({});
 
   return NextResponse.json({
-    currentlyTotalStocks: unfilteredStocks.length,
+    currentlyTotalUnfilteredStocks: unfilteredStocks.length,
     currentlyTotalFilteredStocks: stocks.length,
     stocks,
     unfilteredStocks,
