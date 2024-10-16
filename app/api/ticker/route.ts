@@ -16,6 +16,8 @@ export async function GET() {
 
   const fetchedData: TickerData = await response.json();
 
+  // Fetch all existing symbols from the Stock collection to prevent duplicates
+
   const dataArray = Object.values(fetchedData).map((item) => ({
     cik_str: item.cik_str,
     ticker: item.ticker,
