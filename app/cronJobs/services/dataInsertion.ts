@@ -54,14 +54,14 @@ export async function insertDataWithLimitedConcurrency(
 
 export async function fetchAndInsertDataToUnfilteredStocks() {
   try {
+    await dbConnect();
+
     const response = await fetch(
       "https://www.sec.gov/files/company_tickers.json"
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    await dbConnect();
 
     const fetchedData: TickerData = await response.json();
 
